@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | shadow&#39;s blog</title>
+<title>          xctf-writeup 7-9 | shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://shadownb.github.io/">shadow&#39;s blog</a></h3>
@@ -87,16 +88,59 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1>          xctf-writeup 7-9</h1>
+            <p class="article-meta">
+              2019-08-23
+              
+            </p>
             
-              <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
-                Gridea
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <p>第七题题目大致意思：网页书的·密码不对<br>
+解题思路：<br>
+进入</p>
+<p><img src="https://shadownb.github.io//post-images/1566547391417.png" alt=""><br>
+取消查看网页源代码</p>
+<p><img src="https://shadownb.github.io//post-images/1566547499816.png" alt=""><br>
+解密</p>
+<p><img src="https://shadownb.github.io//post-images/1566547619051.png" alt=""><br>
+py运行</p>
+<p><img src="https://shadownb.github.io//post-images/1566547962594.png" alt=""><br>
+把密码复制在flag里面就好了</p>
+<p>第八题题目基本意思：伪造xff和referer<br>
+解题思路：<br>
+进入</p>
+<p><img src="https://shadownb.github.io//post-images/1566717729579.png" alt=""><br>
+使用burp对firefox进行代理拦截，将xff改成123.123.123.123</p>
+<p><img src="https://shadownb.github.io//post-images/1566718642147.png" alt=""></p>
+<p>在请求头添加Referer： https://www.google.com得到flag</p>
+<p>第九题题目大致意思：爆破弱密码<br>
+解题思路：<br>
+进入（firefox中先完全禁用FireProxy）</p>
+<p><img src="https://shadownb.github.io//post-images/1566721813898.png" alt=""><br>
+任意输入账号密码，然后启用本地代理</p>
+<p><img src="https://shadownb.github.io//post-images/1566722564954.png" alt=""></p>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://shadownb.github.io//post/xctf-writeup-4-6">
+                <h3 class="post-title">
+                  xctf-writeup 4-6
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://shadownb.github.io//images/avatar.png?v=1566722680297" class="no-responsive avatar">
@@ -155,7 +199,7 @@
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge ">
           Gridea
         </a>
       
@@ -165,7 +209,8 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://shadownb.github.io//atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
