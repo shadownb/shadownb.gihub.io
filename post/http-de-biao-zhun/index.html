@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | shadow&#39;s blog</title>
+<title>HTTP的标准 | shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -89,19 +89,63 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>关于</h1>
+            <h1>HTTP的标准</h1>
             <p class="article-meta">
-              2019-01-25
+              2019-08-27
               
             </p>
             
             <div class="post-content">
-              <p>这是关于的页面，可以在这里向世界介绍你！</p>
+              <p>一、http的报文格式<br>
+1、请求头格式<br>
+请求行：<method>(请求方法) <request-url>(URL)  <version>(协议版本)<br>
+请求头部：<Headers></p>
+<p>请求正文：<entity-body></p>
+<p>2、响应头格式<br>
+响应行:<version>(协议版本) <status-code>(状态码) <reason-phrase>(状态描述)<br>
+响应头部：<Headers></p>
+<pre><code>响应正文：&lt;entity-body&gt;
+</code></pre>
+<p>备注：请求方法包括GET，HEAD，PUT，POST，TRACE，OPTIONS，DELETE....</p>
+<p>二、请求头列表<br>
+Accept：指定客户端能够接收的内容类型<br>
+Accept-Language：浏览器可接收的语言<br>
+Accept-Encoding：指定浏览器可以支持的web服务器返回内容压缩编码类型<br>
+Host：指定请求服务器的域名和端口号<br>
+User-Agent：包含发出请求的用户信息<br>
+Connection：表示是否需要持久连接（http 1.1默认持久连接）<br>
+Content-Type:请求与实体相对应MIME信息（设定拓展名文件用某一应用程序打开）<br>
+Content-Length：请求的内容长度<br>
+Origin：说明请求最初从哪里发来的（只用于post请求）<br>
+Referer:请求的来路（适用于所有请求）<br>
+Cookie：HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器<br>
+如有见到，后续再跟</p>
+<p>三、响应头列表<br>
+Date：原始服务器消息发出的时间<br>
+Sever：web服务器软件的名称<br>
+Content-Type：返回内容的MIME类型<br>
+Content-Length:响应体的长度<br>
+Access-Control-Allow-Credentials:允许客户端携带验证信息<br>
+Cache-Control:告诉所有的缓存机制是否可以缓存及哪种类型<br>
+Accept-Ranges:表明服务器是否支持指定范围请求及哪种类型的分段请求<br>
+Set-Cookie:服务器颁发的用户凭证</p>
+<p>四、HTTP状态返回代码</p>
 
             </div>
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="D:/blog/output/post/xctf-writeup-10-12/index.html">
+                <h3 class="post-title">
+                               xctf-writeup  10-12
+                </h3>
+              </a>
+            </div>
           
         </div>
         
