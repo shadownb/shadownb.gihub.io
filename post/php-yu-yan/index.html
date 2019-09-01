@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>          WEB后端语言——SQL语句 | shadow&#39;s blog</title>
+<title>                 PHP语言 | shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -89,45 +89,36 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>          WEB后端语言——SQL语句</h1>
+            <h1>                 PHP语言</h1>
             <p class="article-meta">
-              2019-08-27
+              2019-08-29
               
             </p>
             
             <div class="post-content">
-              <p><img src="https://shadownb.github.io//post-images/1566912777224.png" alt=""></p>
-<p>一、数据库操作<br>
-创建数据库：CREATE DATABASE websecurity;<br>
-查看数据库：SHOW databases;<br>
-切换数据库：USE websecurity；<br>
-删除数据库：DROP DATABASE websecurity；</p>
-<p>tips：SQL语句对大小写不敏感，分号作为语句结束</p>
-<p>二、数据表操作<br>
-<img src="https://shadownb.github.io//post-images/1566913812583.png" alt=""></p>
-<p>创建数据表如上图<br>
-{int（4）   代表4个字节的一个整形<br>
-not null   不能为空的一个值<br>
-primary key 键值<br>
-auto_increment  自增长}<br>
-查看数据表：SHOW tables;<br>
-插入数据表：INSERT INTO 表名（插入数据的名称）<br>
-VALUES（插入的数据）<br>
-<img src="https://shadownb.github.io//post-images/1566915426110.png" alt=""><br>
-查询数据：SELECT * FROM 表名；<br>
-深入查询<br>
-<img src="https://shadownb.github.io//post-images/1566915903667.png" alt=""></p>
-<p>对列表中的元素进行排序<br>
-<img src="https://shadownb.github.io//post-images/1566916195412.png" alt=""></p>
-<p>合并表中的信息<br>
-<img src="https://shadownb.github.io//post-images/1566916249588.png" alt=""><br>
-tips:union不显示重复的数据，如果要显示使用union all</p>
-<p>如何导入一个表格：source + （导入的文件）<br>
-注意：my sql在插入数据库的时候会去除转移符（反斜杠）</p>
-<p>my sql常见的内置函数<br>
-select database();       打印当前数据库名称<br>
-select current_user     打印当前用户<br>
-select load_file+文件的路径   打印文件的内容</p>
+              <p>一、PHP介绍<br>
+php:超文本预处理器{一种广泛的开源的脚本语言，常用于网页开发}</p>
+<p>1.php中的变量<br>
+a.必须要以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">开</mi><mi mathvariant="normal">始</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">变</mi><mi mathvariant="normal">量</mi><mi>x</mi><mi mathvariant="normal">必</mi><mi mathvariant="normal">须</mi><mi mathvariant="normal">要</mi><mi mathvariant="normal">写</mi><mi mathvariant="normal">成</mi></mrow><annotation encoding="application/x-tex">开始，如变量x必须要写成</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord cjk_fallback">开</span><span class="mord cjk_fallback">始</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span><span class="mord mathdefault">x</span><span class="mord cjk_fallback">必</span><span class="mord cjk_fallback">须</span><span class="mord cjk_fallback">要</span><span class="mord cjk_fallback">写</span><span class="mord cjk_fallback">成</span></span></span></span>x<br>
+b.变量的首字母不能以数字开始<br>
+c.变量的名字区分大小写<br>
+d.变量不要用特殊符号、中文,下横杠不算特殊符号<br>
+e.变量命名要有意义</p>
+<p>2.echo是在PHP里面最常用的输出、显示功能的命令。</p>
+<p>3.php注释的学习<br>
+a.单行注释<br>
+//   表示单行注释<br>
+井 井号也表示单行注释，用的比较少<br>
+b.多行注释</p>
+<pre><code>/**
+多行注释 这里是注释区域代码
+**/
+</code></pre>
+<p>4.在PHP语言中声明字符串有三种方式：<br>
+a.用单引号声明<br>
+b.用双引号声明<br>
+c.用字界符声明（需要输入非常大的字符串时使用）<br>
+<img src="https://shadownb.github.io//post-images/1567321622522.png" alt=""></p>
 
             </div>
           </article>
@@ -138,9 +129,9 @@ select load_file+文件的路径   打印文件的内容</p>
               <div class="next">
                 下一篇
               </div>
-              <a href="https://shadownb.github.io//post/http-de-biao-zhun">
+              <a href="https://shadownb.github.io//post/web-hou-duan-yu-yan-sql-yu-ju">
                 <h3 class="post-title">
-                  HTTP的标准
+                            WEB后端语言——SQL语句
                 </h3>
               </a>
             </div>
@@ -231,7 +222,7 @@ select load_file+文件的路径   打印文件的内容</p>
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
           Gridea
         </a>
       
