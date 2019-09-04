@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>          xctf-writeup 7-9 | shadow&#39;s blog</title>
+<title>shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,7 +23,6 @@
 
   </head>
   <body>
-  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://shadownb.github.io/">shadow&#39;s blog</a></h3>
@@ -85,75 +84,91 @@
   </div>
 </nav>
 
+
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <article class="article">
-            <h1>          xctf-writeup 7-9</h1>
-            <p class="article-meta">
-              2019-08-23
-              
-            </p>
-            
-            <div class="post-content">
-              <p>第七题题目大致意思：网页书的·密码不对<br>
-解题思路：<br>
-进入</p>
-<p><img src="https://shadownb.github.io//post-images/1566547391417.png" alt=""><br>
-取消查看网页源代码</p>
-<p><img src="https://shadownb.github.io//post-images/1566547499816.png" alt=""><br>
-解密</p>
-<p><img src="https://shadownb.github.io//post-images/1566547619051.png" alt=""><br>
-py运行</p>
-<p><img src="https://shadownb.github.io//post-images/1566547962594.png" alt=""><br>
-把密码复制在flag里面就好了</p>
-<p>第八题题目基本意思：伪造xff和referer<br>
-解题思路：<br>
-进入</p>
-<p><img src="https://shadownb.github.io//post-images/1566717729579.png" alt=""><br>
-使用burp对firefox进行代理拦截，将xff改成123.123.123.123</p>
-<p><img src="https://shadownb.github.io//post-images/1566718642147.png" alt=""></p>
-<p>在请求头添加Referer： https://www.google.com得到flag</p>
-<p>第九题题目大致意思：爆破弱密码<br>
-解题思路：<br>
-进入（firefox中先完全禁用FireProxy）</p>
-<p><img src="https://shadownb.github.io//post-images/1566721813898.png" alt=""><br>
-任意输入账号密码，然后启用本地代理</p>
-<p><img src="https://shadownb.github.io//post-images/1566722564954.png" alt=""><br>
-进入burpsuit看</p>
-<p><img src="https://shadownb.github.io//post-images/1566723008556.png" alt=""><br>
-右键send to intruder ，点击上面的intruder</p>
-<p><img src="https://shadownb.github.io//post-images/1566723740223.png" alt=""><br>
-将username改为admin，load添加字典</p>
-<p><img src="https://shadownb.github.io//post-images/1566723833432.png" alt=""><br>
-线程改为50</p>
-<p><img src="https://shadownb.github.io//post-images/1566723865196.png" alt=""><br>
-然后start intruder，则看到数据不一样的那个</p>
-<p><img src="https://shadownb.github.io//post-images/1566723957918.png" alt=""><br>
-则可以看出账号和密码</p>
-<p><img src="https://shadownb.github.io//post-images/1566724020453.png" alt=""><br>
-flag就出来了</p>
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://shadownb.github.io//post/xctf-writeup-4-6">xctf-writeup 4-6</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-22
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://shadownb.github.io//post/xctf-writeup-4-6" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://shadownb.github.io//post/xctf-writeup-4-6">
-                <h3 class="post-title">
-                  xctf-writeup 4-6
-                </h3>
-              </a>
-            </div>
-          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://shadownb.github.io//post/xctf-qian-san-dao-ti">              xctf-writeup 1-3</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-22
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://shadownb.github.io//post/xctf-qian-san-dao-ti" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://shadownb.github.io//post/hello-gridea">Hello Gridea</a>
+    </h2>
+    <p class="article-meta">
+      2018-12-12
+      
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge ">
+          Gridea
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+
+    </p>
+    <div class="row">
+      <a href="https://shadownb.github.io//post/hello-gridea" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
         </div>
         
-      </div>
+        <div class="row flex-edges">
+  
+    <a href="https://shadownb.github.io//" class="paper-btn">
+      上一页
+    </a>
+  
+  
+</div>
 
+      </div>
+      
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://shadownb.github.io//images/avatar.png?v=1567588228911" class="no-responsive avatar">
@@ -254,7 +269,7 @@ flag就出来了</p>
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge ">
           Gridea
         </a>
       
@@ -265,9 +280,7 @@ flag就出来了</p>
   </div>
 </div>
 
-
     </div>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script type="application/javascript">
