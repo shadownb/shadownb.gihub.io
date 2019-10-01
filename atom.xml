@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shadownb.github.io/</id>
     <title>shadow&apos;s blog</title>
-    <updated>2019-09-05T11:18:08.555Z</updated>
+    <updated>2019-10-01T06:56:48.263Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shadownb.github.io/"/>
     <link rel="self" href="https://shadownb.github.io//atom.xml"/>
@@ -10,6 +10,27 @@
     <logo>https://shadownb.github.io//images/avatar.png</logo>
     <icon>https://shadownb.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, shadow&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[      点击劫持漏洞]]></title>
+        <id>https://shadownb.github.io//post/dian-ji-jie-chi-lou-dong</id>
+        <link href="https://shadownb.github.io//post/dian-ji-jie-chi-lou-dong">
+        </link>
+        <updated>2019-09-30T07:25:47.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[                      CSRF漏洞]]></title>
+        <id>https://shadownb.github.io//post/csrf-lou-dong</id>
+        <link href="https://shadownb.github.io//post/csrf-lou-dong">
+        </link>
+        <updated>2019-09-30T06:43:25.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[               XSS]]></title>
+        <id>https://shadownb.github.io//post/xss</id>
+        <link href="https://shadownb.github.io//post/xss">
+        </link>
+        <updated>2019-09-25T10:52:22.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[    搭建sqli—labs]]></title>
         <id>https://shadownb.github.io//post/da-jian-sqli-labs</id>

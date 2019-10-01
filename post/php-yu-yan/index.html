@@ -7,7 +7,7 @@
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1567682263674">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1569828535738">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -116,7 +116,9 @@ b.多行注释</p>
 </code></pre>
 <p>4.在PHP语言中声明字符串有三种方式：<br>
 a.用单引号声明<br>
+用英文半角的单引号，将字符串包起来<br>
 b.用双引号声明<br>
+&quot;在字符串两边加双引号&quot;<br>
 c.用字界符声明（需要输入非常大的字符串时使用）<br>
 <img src="https://shadownb.github.io//post-images/1567321622522.png" alt=""></p>
 <p>结论:双引号需要解析变量，因此双引号的效率没有单引号高。</p>
@@ -134,7 +136,32 @@ is_null是否为空<br>
 is_resource是否为资源<br>
 is_scalar是否为标量<br>
 is_numeric是否为数值类型<br>
-is_callable是否为函数</p>
+is_callable是否为函数<br>
+查看数据类型<br>
+a:gettype（传入一个变量）能够获得变量的类型<br>
+b:var_dump（传入一个变量）输出变量类型和值</p>
+<p>7.php数据类型之null类型<br>
+主要有以下三空情况会产生空（null）类型：<br>
+a：通过变量赋值明确指定为变量的值为NULL<br>
+b：一个变量没有任何值<br>
+c：使用函数unset（）将变量销毁掉<br>
+empty（）可以向括号中间传入一个变量。这个变量的值如果为false或者为null的话，返回true。<br>
+isset()可以向括号中间传入一个或者多个变量，变量与变量间用逗号分开。只要有有一个变量为null，则返回false。否则，则返回true。<br>
+unset()这个函数的功能是毁掉变量。unset(变量)括号中间插入想要毁掉的变量名，这个变量就会被毁掉。</p>
+<p>8.布尔值的自动类型转换<br>
+有何情况：<br>
+a.整形的0为假，其他的整型值全为真<br>
+b.浮点的0.0，布尔值的假。小数点后只要有一个非零的数值即为真。<br>
+c.空字符串为假，只要里面有一个空格都算真。<br>
+d.字符串的0，也将其看作假。其他的都为真<br>
+e.空数组也将其视为假，只要里面有一个值，就为真。<br>
+f.空也为假<br>
+g.未声明成功的资源也为假</p>
+<p>强制类型转换的三种方式：<br>
+a.用 intval（）、floatval（）、strval（）这三个函数可以完成类型转换<br>
+b.变量前加（）里面写上类型，将他转换后赋值给其它变量<br>
+c.settype（变量，类型）直接改变变量本身</p>
+<p>9.define(常量名，常量）</p>
 
             </div>
           </article>
@@ -158,7 +185,7 @@ is_callable是否为函数</p>
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://shadownb.github.io//images/avatar.png?v=1567682263674" class="no-responsive avatar">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1569828535738" class="no-responsive avatar">
     <div class="text-muted">Long time no see.</div>
     <div class="social-container">
       
@@ -180,6 +207,24 @@ is_callable是否为函数</p>
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/dian-ji-jie-chi-lou-dong">      点击劫持漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/csrf-lou-dong">                      CSRF漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/xss">               XSS</a>
+            </li>
+          
         
           
             <li>
@@ -224,21 +269,9 @@ is_callable是否为函数</p>
           
         
           
-            <li>
-              <a href="https://shadownb.github.io//post/http-de-biao-zhun">HTTP的标准</a>
-            </li>
-          
         
           
-            <li>
-              <a href="https://shadownb.github.io//post/xctf-writeup-10-12">             xctf-writeup  10-12</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://shadownb.github.io//post/xctf-writeup-7-9">          xctf-writeup 7-9</a>
-            </li>
           
         
           
@@ -256,7 +289,7 @@ is_callable是否为函数</p>
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge warning">
           Gridea
         </a>
       
