@@ -7,7 +7,7 @@
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1570091957930">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1570100076704">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -98,7 +98,59 @@
             <div class="post-content">
               <p>前言<br>
 国庆第二天依旧是很崩的一天<br>
-445端口简介：445端口可以让我们在局域网中轻松访问各种共享文件和打印机，虽然很便利，但是也让黑客有可乘之机。</p>
+445端口简介：445端口可以让我们在局域网中轻松访问各种共享文件和打印机，虽然很便利，但是也让黑客有可乘之机。<br>
+永恒之蓝原理：主要扫描所有开放445文件共享端口的windows</p>
+<p>环境：kali 系统  ip：192.168.1.55<br>
+win7系统  ip：192.168.1.50  端口：445</p>
+<p>实战<br>
+主机检测：<br>
+<img src="https://shadownb.github.io//post-images/1570094449757.png" alt=""><br>
+确定好靶机，进行端口检测：<br>
+<img src="https://shadownb.github.io//post-images/1570095603995.png" alt=""></p>
+<p>查看MSF框架版本：<br>
+终端输msfconsole<br>
+<img src="https://shadownb.github.io//post-images/1570094687482.png" alt=""></p>
+<p>寻找漏洞模块：<br>
+<img src="https://shadownb.github.io//post-images/1570094871944.png" alt=""></p>
+<p>加载auxiliary/scanner/smb/smb_ms17-010<br>
+<img src="https://shadownb.github.io//post-images/1570095096920.png" alt=""></p>
+<p>显示选项show options<br>
+<img src="https://shadownb.github.io//post-images/1570095334223.png" alt=""></p>
+<p>设置检测对方靶机ip：  set rhost 192.168.1.50<br>
+<img src="https://shadownb.github.io//post-images/1570095409666.png" alt=""></p>
+<p>运行，检测是否存在ms17-010<br>
+<img src="https://shadownb.github.io//post-images/1570098753967.png" alt=""></p>
+<p>进行攻击，使用模块<br>
+<img src="https://shadownb.github.io//post-images/1570098794200.png" alt=""></p>
+<p>设置对方靶机ip<br>
+<img src="https://shadownb.github.io//post-images/1570098812495.png" alt=""></p>
+<p>攻击<br>
+<img src="https://shadownb.github.io//post-images/1570098859807.png" alt=""><br>
+成功！</p>
+<p>进入对方主机的c盘<br>
+<img src="https://shadownb.github.io//post-images/1570099093052.png" alt=""></p>
+<p>显示目录，获取flag<br>
+<img src="https://shadownb.github.io//post-images/1570099126806.png" alt=""></p>
+<p>Q:既然我能够攻击进去，那如果我是对方，我应该怎么修补这个漏洞呢？<br>
+在控制面板找到windows防火墙将防火墙刚开起来<br>
+关sever服务：<br>
+win+R 输 services.msc<br>
+<img src="https://shadownb.github.io//post-images/1570099442473.png" alt=""><br>
+停止此服务</p>
+<p>关445端口：<br>
+控制面板&gt;系统和安全&gt;windows安全&gt;高级设置<br>
+<img src="https://shadownb.github.io//post-images/1570099840566.png" alt=""><br>
+新建入站规则<br>
+<img src="https://shadownb.github.io//post-images/1570100013227.png" alt=""><br>
+选择445端口关闭就好了</p>
+<p>验证是否修补了这个漏洞<br>
+如何验证：我用永恒之蓝再攻一遍，看是否能够攻进去<br>
+如若不能，那就验证我将这个漏洞修补完毕<br>
+<img src="https://shadownb.github.io//post-images/1570096574835.png" alt=""><br>
+方框里面没有ms17-010，只能说用永恒之蓝攻不进去</p>
+<p>检测端口<br>
+<img src="https://shadownb.github.io//post-images/1570096685116.png" alt=""><br>
+已经没有445端口存在了，说明修补成功！</p>
 
             </div>
           </article>
@@ -122,7 +174,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://shadownb.github.io//images/avatar.png?v=1570091957930" class="no-responsive avatar">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1570100076704" class="no-responsive avatar">
     <div class="text-muted">Long time no see.</div>
     <div class="social-container">
       
@@ -230,7 +282,7 @@
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
           Gridea
         </a>
       
