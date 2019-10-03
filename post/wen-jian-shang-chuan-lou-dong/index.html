@@ -7,7 +7,7 @@
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1570017343784">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1570091957930">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -96,7 +96,11 @@
             </p>
             
             <div class="post-content">
-              <p>第一步：找目标主机<br>
+              <p>前言<br>
+今天国庆节，师兄开了台靶机让我玩，我要进去拿到flag<br>
+首先靶机在哪呢？<br>
+如何找到靶机？<br>
+第一步：找目标主机<br>
 用kali输netdiscover即可发现同一网段存活的所有主机<br>
 <img src="https://shadownb.github.io//post-images/1569999612876.png" alt=""><br>
 问题：如何判断哪一台才是需要攻击的主机？<br>
@@ -111,11 +115,13 @@
 80     ：  是为HTTP（超文本传输协议）开放的<br>
 135   ： 主要用于RPC（远程过程调用）协议并提供DCOM（分布式组件对象模型）服务<br>
 139   ： 主要用于提供windows文件和打印机共享以及Unix的Samba服务（基于服务器协议族）<br>
-445      跟139端口服务差不多（但基于通用因特网文件系统协议），可能存在永恒之蓝MS17-010<br>
-3306    mysql数据库端口，可能存在弱口令暴力破解<br>
-5357</p>
+445   ：  跟139端口服务差不多（但基于通用因特网文件系统协议），可能存在永恒之蓝MS17-010<br>
+3306 ： mysql数据库端口，可能存在弱口令暴力破解</p>
 <p>第三步：在浏览器上访问ip<br>
-此刻看到有登陆框</p>
+此刻看到有登陆框，试了一下弱密码，就进去了<br>
+看到dvwa的界面，我选择的方法是文件上传，先上传了一张图片，显示successful<br>
+那么我想上传一个木马进去呢？是不是也会成功<br>
+然而显示不成功，</p>
 
             </div>
           </article>
@@ -139,7 +145,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://shadownb.github.io//images/avatar.png?v=1570017343784" class="no-responsive avatar">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1570091957930" class="no-responsive avatar">
     <div class="text-muted">Long time no see.</div>
     <div class="social-container">
       
@@ -161,6 +167,12 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/ms17-010">                ms17-010</a>
+            </li>
+          
         
           
             <li>
@@ -217,10 +229,6 @@
           
         
           
-            <li>
-              <a href="https://shadownb.github.io//post/php-yu-yan">                 PHP语言</a>
-            </li>
-          
         
           
         
@@ -245,7 +253,7 @@
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge warning">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
           Gridea
         </a>
       
