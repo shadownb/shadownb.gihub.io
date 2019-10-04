@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>            文件上传漏洞 | shadow&#39;s blog</title>
+<title>          DVWA之命令注入 | shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -89,39 +89,39 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>            文件上传漏洞</h1>
+            <h1>          DVWA之命令注入</h1>
             <p class="article-meta">
-              2019-10-02
+              2019-10-04
               
             </p>
             
             <div class="post-content">
-              <p>前言<br>
-今天国庆节，师兄开了台靶机让我玩，我要进去拿到flag<br>
-首先靶机在哪呢？<br>
-如何找到靶机？<br>
-第一步：找目标主机<br>
-用kali输netdiscover即可发现同一网段存活的所有主机<br>
-<img src="https://shadownb.github.io//post-images/1569999612876.png" alt=""><br>
-问题：如何判断哪一台才是需要攻击的主机？<br>
-扫出1网段上所有ip的80端口是开放的<br>
-<img src="https://shadownb.github.io//post-images/1570016333185.png" alt=""></p>
-<p>第二步：查看有哪些漏洞<br>
-用nmap直接扫ip查看哪些端口开放<br>
-<img src="https://shadownb.github.io//post-images/1569999649243.png" alt=""><br>
-此处看到80端口开放<br>
-常见端口及服务<br>
-端口    服务<br>
-80     ：  是为HTTP（超文本传输协议）开放的<br>
-135   ： 主要用于RPC（远程过程调用）协议并提供DCOM（分布式组件对象模型）服务<br>
-139   ： 主要用于提供windows文件和打印机共享以及Unix的Samba服务（基于服务器协议族）<br>
-445   ：  跟139端口服务差不多（但基于通用因特网文件系统协议），可能存在永恒之蓝MS17-010<br>
-3306 ： mysql数据库端口，可能存在弱口令暴力破解</p>
-<p>第三步：在浏览器上访问ip<br>
-此刻看到有登陆框，试了一下弱密码，就进去了<br>
-看到dvwa的界面，我选择的方法是文件上传，先上传了一张图片，显示successful<br>
-那么我想上传一个木马进去呢？是不是也会成功<br>
-然而显示不成功，</p>
+              <p>背景：<br>
+命令注入是指在某些需要输入数据的位置，构造了恶意的代码破坏了原先的语句结构，系统不能有效的过滤最终达到破坏数据、信息泄露甚至掌控电脑的目的。<br>
+有关知识：命令连接符<br>
+1.&amp;<br>
+command1&amp;command2<br>
+先执行command1，不管执是否成功，都会执行command2<br>
+2.；<br>
+command1；command2<br>
+依次顺序执行command1和command2。<br>
+3.&amp;&amp;<br>
+command1&amp;&amp;command2<br>
+并行执行command1和command2，但command1执行成功，command2才会执行。<br>
+4.||<br>
+command1||command2<br>
+command1执行成功则不执行command2，如果command1执行失败则执行command2<br>
+5.|<br>
+command1|command2<br>
+|是管道符号。管道符号改变标准输入的源或者是标准输出的目的地。<br>
+shell将command1的标准输出重定向到command2的标准输入</p>
+<p>测试：当我们输入ip &amp;&amp; whoami<br>
+<img src="https://shadownb.github.io//post-images/1570190847490.png" alt=""></p>
+<p>当我在DVWA的命令注入行输入192.168.1.53 &amp;&amp; ipconfig时<br>
+<img src="https://shadownb.github.io//post-images/1570190928381.png" alt=""></p>
+<p>当我需要找到c盘下面的flag时，我输入192.168.1.53 &amp;&amp; type C:\flagvalues.txt<br>
+<img src="https://shadownb.github.io//post-images/1570191219723.png" alt=""><br>
+就能获得我想要的答案了</p>
 
             </div>
           </article>
@@ -132,9 +132,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://shadownb.github.io//post/dian-ji-jie-chi-lou-dong">
+              <a href="https://shadownb.github.io//post/ms17-010">
                 <h3 class="post-title">
-                                     点击劫持漏洞
+                                  ms17-010
                 </h3>
               </a>
             </div>
@@ -255,7 +255,7 @@
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge warning">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
           Gridea
         </a>
       
