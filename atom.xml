@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shadownb.github.io/</id>
     <title>shadow&apos;s blog</title>
-    <updated>2019-12-03T14:23:38.597Z</updated>
+    <updated>2019-12-03T14:24:14.015Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shadownb.github.io/"/>
     <link rel="self" href="https://shadownb.github.io//atom.xml"/>
@@ -10,13 +10,6 @@
     <logo>https://shadownb.github.io//images/avatar.png</logo>
     <icon>https://shadownb.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, shadow&apos;s blog</rights>
-    <entry>
-        <title type="html"><![CDATA[    ]]></title>
-        <id>https://shadownb.github.io//post/</id>
-        <link href="https://shadownb.github.io//post/">
-        </link>
-        <updated>2019-12-03T09:33:06.000Z</updated>
-    </entry>
     <entry>
         <title type="html"><![CDATA[                 文件包含]]></title>
         <id>https://shadownb.github.io//post/wen-jian-bao-han</id>
@@ -149,5 +142,18 @@
         <link href="https://shadownb.github.io//post/xctf-qian-san-dao-ti">
         </link>
         <updated>2019-08-22T05:26:01.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://shadownb.github.io//post/hello-gridea</id>
+        <link href="https://shadownb.github.io//post/hello-gridea">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></content>
     </entry>
 </feed>
