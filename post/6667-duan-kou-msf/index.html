@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" >
 
-<title>    搭建sqli—labs | shadow&#39;s blog</title>
+<title>       metasploitable2各端口渗透 | shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1575364374902">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1576772496874">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -89,14 +89,38 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>    搭建sqli—labs</h1>
+            <h1>       metasploitable2各端口渗透</h1>
             <p class="article-meta">
-              2019-09-04
+              2019-12-17
               
             </p>
             
             <div class="post-content">
-              <p>.....</p>
+              <p>netdiscover:发现目标主机<br>
+<img src="https://shadownb.github.io//post-images/1575450582406.png" alt=""><br>
+nmap 192.168.80.148：扫靶机端口开放情况<br>
+<img src="https://shadownb.github.io//post-images/1576591972860.png" alt=""></p>
+<p>1.弱口令漏洞：<br>
+telnet 192.168.80.148：由于22端口开放<br>
+login/passwd均为msfadmin</p>
+<p>2.mysql弱密码登陆：<br>
+kali里面输mysql -h 192.168.80.148<br>
+<img src="https://shadownb.github.io//post-images/1576591903472.png" alt=""><br>
+<img src="https://shadownb.github.io//post-images/1576591866296.png" alt=""></p>
+<p>3.由于nmap扫靶机端口看到6667端口开放<br>
+就来做个实验记录一下<br>
+进msfconsole,寻找unreal_ircd_3281_backdoor<br>
+<img src="https://shadownb.github.io//post-images/1576570046412.png" alt=""></p>
+<p>使用模块：use exploit/unix/irc/unreal_ircd_3281_backdoor<br>
+<img src="https://shadownb.github.io//post-images/1576570250343.png" alt=""></p>
+<p>通过show options设置相应的参数<br>
+<img src="https://shadownb.github.io//post-images/1576570315483.png" alt=""></p>
+<p>要设置的参数为rhost,已设置rport（不需管）<br>
+<img src="https://shadownb.github.io//post-images/1576590342575.png" alt=""></p>
+<p>开始攻击<br>
+<img src="https://shadownb.github.io//post-images/1576590385704.png" alt=""></p>
+<p>成功建立会话<br>
+<img src="https://shadownb.github.io//post-images/1576590446333.png" alt=""></p>
 
             </div>
           </article>
@@ -107,9 +131,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://shadownb.github.io//post/da-jian-dvwa">
+              <a href="https://shadownb.github.io//post/wen-jian-bao-han">
                 <h3 class="post-title">
-                           学习DVWA
+                                   文件包含
                 </h3>
               </a>
             </div>
@@ -120,7 +144,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://shadownb.github.io//images/avatar.png?v=1575364374902" class="no-responsive avatar">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1576772496874" class="no-responsive avatar">
     <div class="text-muted">Long time no see.</div>
     <div class="social-container">
       
@@ -142,6 +166,18 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/jis-ctf-ba-ji-shen-tou">                     JIS-CTF靶机渗透</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/6667-duan-kou-msf">       metasploitable2各端口渗透</a>
+            </li>
+          
         
           
             <li>
@@ -187,20 +223,10 @@
         
           
             <li>
-              <a href="https://shadownb.github.io//post/da-jian-sqli-labs">    搭建sqli—labs</a>
-            </li>
-          
-        
-          
-            <li>
               <a href="https://shadownb.github.io//post/da-jian-dvwa">         学习DVWA</a>
             </li>
           
         
-          
-            <li>
-              <a href="https://shadownb.github.io//post/lian-he-zhu-ru">     联合注入</a>
-            </li>
           
         
           

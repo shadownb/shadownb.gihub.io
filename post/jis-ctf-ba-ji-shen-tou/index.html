@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>                     JIS-CTF靶机渗透 | shadow&#39;s blog</title>
+<meta name="description" content="Long time no see.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1576772496874">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://shadownb.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://shadownb.github.io/">shadow&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>                     JIS-CTF靶机渗透</h1>
+            <p class="article-meta">
+              2019-12-19
+              
+            </p>
+            
+            <div class="post-content">
+              <p>昨天问朋友要到了靶机的wp,其实wp是什么东西我也不知道，于是乎，就百度了一下<br>
+然后呢了解了就开始进入正题<br>
+<strong>环境部分</strong>：<br>
+kali ： 192.168.1.128<br>
+靶机：目前不知道ip，但是知道是192.168.1.0/24的<br>
+网络：VMnet8<br>
+<strong>过程</strong><br>
+用nmap扫描192.168.1.0/24网段内存活的主机<br>
+<img src="https://shadownb.github.io//post-images/1576736283154.png" alt=""><br>
+发现目标靶机ip，并且开放了22和80端口</p>
+<p>既然80端口开放，那就去浏览器访问<br>
+<img src="https://shadownb.github.io//post-images/1576735760116.png" alt=""><br>
+出现了登录界面</p>
+<p><strong>尝试阶段</strong><br>
+看到了登录界面，那就用弱密码尝试登录，并没有成功登录进去，源代码也没有切入点<br>
+尝试使用dirb爆破目录<br>
+注：dirb是一个专门用于爆破目录的工具，在kali中默认已安装，类似工具还有国外的patator,dirsearch,DirBuster,国内的御剑等<br>
+<img src="https://shadownb.github.io//post-images/1576736123904.png" alt=""><br>
+爆出了一个flag的目录<br>
+使用kali自带的浏览器去访问<br>
+<img src="https://shadownb.github.io//post-images/1576736411367.png" alt=""><br>
+拿到了第一个flag<br>
+!!思考：第一个flag在哪的？!!</p>
+<p>回到最上面，我们爆出了那么多目录，那就去访问<br>
+第一个目录admin_area<br>
+<img src="https://shadownb.github.io//post-images/1576736567341.png" alt=""><br>
+这个目录好像是什么都没有，那我们尝试看一下它的源码<br>
+<img src="https://shadownb.github.io//post-images/1576736638739.png" alt=""><br>
+看到了第二个flag，并且附带了最初界面的登录帐号和密码，尝试登录<br>
+<img src="https://shadownb.github.io//post-images/1576736865134.png" alt=""><br>
+文件上传！</p>
+<p>现在尝试kali里面自带生成马的工具WeBaCoo，由于第一次使用，如果没成功，请忽略<br>
+简介：kali已经集成，产生终端shell，编码类型通过http头部传输，隐蔽性较强，适合作为临时shell，没有密码，只能用于php<br>
+<img src="https://shadownb.github.io//post-images/1576738387890.png" alt=""><br>
+马已生成<br>
+连接失败<br>
+<img src="https://shadownb.github.io//post-images/1576738607967.png" alt=""></p>
+<p>尝试使用kali里面的中国菜刀weevely<br>
+简介：weevely是一个kali中集成的webshell工具，是webshell的生成和连接集于一身的轻量级工具，生成的后门隐蔽性比较好，是随机生成的参数并且加密的<br>
+<img src="https://shadownb.github.io//post-images/1576738899647.png" alt=""><br>
+木马已生成，将木马文件上传上去<br>
+<img src="https://shadownb.github.io//post-images/1576768990069.png" alt=""><br>
+现在需要确定路径连接<br>
+访问之前爆出的目录robots.txt，为什么访问robots文件，请参考robots协议<br>
+<img src="https://shadownb.github.io//post-images/1576739140311.png" alt=""><br>
+看到了uploads和uploaded_files,访问uploads，页面报错<br>
+<img src="https://shadownb.github.io//post-images/1576739493634.png" alt=""><br>
+接着访问uploaded_files<br>
+<img src="https://shadownb.github.io//post-images/1576739550225.png" alt=""></p>
+<p>页面没有报错，木马位置就在uploaded_files里<br>
+使用weevely连接<br>
+<img src="https://shadownb.github.io//post-images/1576768909165.png" alt=""></p>
+<p>成功进入<br>
+<img src="https://shadownb.github.io//post-images/1576769239547.png" alt=""></p>
+<p>可以看到，我们现在是在什么什么目录下<br>
+返回上一层目录，查看所有目录<br>
+<img src="https://shadownb.github.io//post-images/1576769315754.png" alt=""><br>
+看到flag.txt,尝试查看，发现权限不够<br>
+<img src="https://shadownb.github.io//post-images/1576769577556.png" alt=""></p>
+<p>尝试查看hint.txt,发现有flag,并且有提示<br>
+<img src="https://shadownb.github.io//post-images/1576769691345.png" alt=""></p>
+<p>根据提示，我们需要查询此用户名所在的配置文件<br>
+注：grep是一个&quot;全局搜索&quot;的工具，会在文本文档中按照指定的正则进行全局搜索，并将搜索出的行打印下来<br>
+<img src="https://shadownb.github.io//post-images/1576771043537.png" alt=""></p>
+<p>查看这个文件<br>
+<img src="https://shadownb.github.io//post-images/1576771251705.png" alt=""><br>
+第四个flag在配置文件里面</p>
+<p><img src="https://shadownb.github.io//post-images/1576771837365.png" alt=""><br>
+有22端口开放，使用ssh服务，尝试登录帐号密码</p>
+<p><img src="https://shadownb.github.io//post-images/1576771990814.png" alt=""><br>
+登录成功</p>
+<p>还记得我们开始用木马进去看的目录下的flag.txt吗？<br>
+进入此目录，获取flag.txt<br>
+<img src="https://shadownb.github.io//post-images/1576772094341.png" alt=""><br>
+我们已经拿到所有的flag了</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://shadownb.github.io//post/6667-duan-kou-msf">
+                <h3 class="post-title">
+                         metasploitable2各端口渗透
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1576772496874" class="no-responsive avatar">
+    <div class="text-muted">Long time no see.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/jis-ctf-ba-ji-shen-tou">                     JIS-CTF靶机渗透</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/6667-duan-kou-msf">       metasploitable2各端口渗透</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/wen-jian-bao-han">                 文件包含</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/dvwa-zhi-ming-ling-zhu-ru">          DVWA之命令注入</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/ms17-010">                ms17-010</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/wen-jian-shang-chuan-lou-dong">            文件上传漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/dian-ji-jie-chi-lou-dong">                   点击劫持漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/csrf-lou-dong">                      CSRF漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/xss">               XSS</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/da-jian-dvwa">         学习DVWA</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://shadownb.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
