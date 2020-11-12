@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>友链 | shadow&#39;s blog</title>
+<title>       phpmyadmin远程代码执行漏洞 | shadow&#39;s blog</title>
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -89,22 +89,56 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>友链</h1>
+            <h1>       phpmyadmin远程代码执行漏洞</h1>
             <p class="article-meta">
-              2019-08-22
+              2020-10-24
               
             </p>
             
             <div class="post-content">
-              <h4 id="rj45"><a href="https://rj45mp.github.io/">Rj45</a></h4>
-<h4 id="asolmn"><a href="https://blog.asolmn.top">Asolmn</a></h4>
-<p><a href="https://soyawww.github.io/">soya</a><br>
-<a href="http://cuokon.github.io">cuokon</a></p>
+              <p>今天是上pte的第一天，非常疲惫，老师讲了一点理论就开始让我们打靶机，很懵甚至有点无从下手。<br>
+直接进入正题了。<br>
+<img src="https://shadownb.github.io//post-images/1603543959599.png" alt=""><br>
+可以看到是phpmyadmin的登陆界面，尝试弱密码登录登不进去。<br>
+那就尝试bp爆破。<br>
+<img src="https://shadownb.github.io//post-images/1603544221488.png" alt=""><br>
+爆破出来了，然后去登录。<br>
+<img src="https://shadownb.github.io//post-images/1603544381378.png" alt=""><br>
+成功登录。<br>
+在kali中有自带的EXP，使用命令searchsploit phpmyadmin<br>
+<img src="https://shadownb.github.io//post-images/1603563406203.png" alt=""><br>
+首先需要进入到40185.py的上一级目录下<br>
+<img src="https://shadownb.github.io//post-images/1603563687771.png" alt=""><br>
+先通过EXP进行测试<br>
+<img src="https://shadownb.github.io//post-images/1603563885024.png" alt=""><br>
+可以成功的看到用户的id和群组的id</p>
+<p>下一步我们就要思考如何拿到webshell并进行连接<br>
+上一步可以看到我们所输入的命令都是在服务器端执行的，那可想我们在本机写一句话木马是没有用的，那就要思考如何将木马写入到服务器端<br>
+<img src="https://shadownb.github.io//post-images/1603564447885.png" alt=""><br>
+尝试将一句话木马直接写入一个文件，但是会过滤掉尖括号之类的，所以不可用这种方法<br>
+<img src="https://shadownb.github.io//post-images/1603564591929.png" alt=""><br>
+尝试将木马编码成base64写入到文件中，虽然文件确实可以到服务器中，在室友的提醒下，我发现写入的只是编码，并没有回转成明文，所以我需要将它回转成明文再写入一个php文件中<br>
+<img src="https://shadownb.github.io//post-images/1603564840206.png" alt=""><br>
+通过ls命令查看我的木马是否在服务器的根目录中<br>
+<img src="https://shadownb.github.io//post-images/1603564929350.png" alt=""><br>
+接下来就通过蚁剑连接<br>
+<img src="https://shadownb.github.io//post-images/1603564980026.png" alt=""></p>
 
             </div>
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://shadownb.github.io//post/python-format">
+                <h3 class="post-title">
+                  python
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -230,7 +264,7 @@
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge ">
           Gridea
         </a>
       
