@@ -7,7 +7,7 @@
 <meta name="description" content="Long time no see.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1605443835425">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1615017265160">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -103,6 +103,81 @@
 尝试用admin用户登录<br>
 <img src="https://shadownb.github.io//post-images/1605443818521.png" alt=""><br>
 右边即可看到flag</p>
+<p>代码审计</p>
+<pre><code>&lt;?php
+show_source(__FILE__);
+$v1 = 0; //赋值
+$v2 = 0;
+
+
+$a = (array)json_decode(@$_GET['w']);  #把json格式的数据传入
+								                                            #例：$json = '{&quot;foo-bar&quot;:12345}';
+
+if (is_array($a)) {   #判断是否为数组
+    is_numeric(@$a[&quot;bar1&quot;]) ? die(&quot;nope&quot;) : NULL;   #判断是否为纯数字，是的话出发die函数，否则为空
+
+    if (@$a[&quot;bar1&quot;]) {
+        ($a[&quot;bar1&quot;] &gt; 2020) ? $v1 = 1 : NULL;   #如果bar1大于2020，v1 = 1
+    }
+
+    if (is_array(@$a[&quot;bar2&quot;])) {   #如果bar2为数组
+        if (count($a[&quot;bar2&quot;]) !== 5 OR !is_array($a[&quot;bar2&quot;][0]))//bar2的元素不能为5且索引0不是数组，触发die函数
+            die(&quot;nope&quot;);
+        $pos = array_search(&quot;cisp-pte&quot;, $a[&quot;bar3&quot;]);    #查找bar3中cisp-pte
+        $pos === false ? die(&quot;nope&quot;) : NULL;    #如果有，返回null
+        foreach ($a[&quot;bar2&quot;] as $key =&gt; $val) {      #键值对循环bar2
+            $val === &quot;cisp-pte&quot; ? die(&quot;nope&quot;) : NULL;
+        }
+        $v2 = 1;
+    }
+}
+
+if ($v1 &amp;&amp; $v2) {      #如果v1，v2同时满足等于1则打印key.php
+    include(&quot;key.php&quot;);
+    echo $key;
+}
+?&gt;
+
+</code></pre>
+<p>payload :   <code>http://172.30.97.10/Tkitn/1.php?w={&quot;bar1&quot;:[2021],&quot;bar2&quot;:[[1],2,3,4,5],&quot;bar3&quot;:[&quot;cisp-pte&quot;]}</code></p>
+<p><img src="https://shadownb.github.io//post-images/1605446887582.png" alt=""></p>
+<p><strong>重点：绕过is_numeric</strong></p>
+<p>变形题</p>
+<pre><code>&lt;?php
+show_source(__FILE__);
+$v1 = 0;
+$v2 = 0;
+
+
+$a = (array)json_decode(@$_GET['w']);
+
+if (is_array($a)) {
+    is_numeric(@$a[&quot;bar1&quot;]) ? die(&quot;nope&quot;) : NULL;
+
+    if (@$a[&quot;bar1&quot;]) {
+        ($a[&quot;bar1&quot;] &gt; 2020) ? $v1 = 1 : NULL;
+    }
+
+    if (is_array(@$a[&quot;bar2&quot;])) {
+        if (count($a[&quot;bar2&quot;]) !== 5 OR !is_array($a[&quot;bar2&quot;][0]))
+            die(&quot;nope&quot;);
+        $pos = array_search(&quot;cisp-pte&quot;, $a[&quot;bar2&quot;]);
+        $pos === false ? die(&quot;nope&quot;) : NULL;
+        foreach ($a[&quot;bar2&quot;] as $key =&gt; $val) {
+            $val === &quot;cisp-pte&quot; ? die(&quot;nope&quot;) : NULL;
+        }
+        $v2 = 1;
+    }
+}
+
+if ($v1 &amp;&amp; $v2) {
+    include(&quot;key.php&quot;);
+    echo $key;
+}
+?&gt; 
+
+</code></pre>
+<p>因为上面array_search()要求必须要有&quot;cisp-pte&quot;,但是后面又不让出现这个值</p>
 
             </div>
           </article>
@@ -126,7 +201,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://shadownb.github.io//images/avatar.png?v=1605443835425" class="no-responsive avatar">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1615017265160" class="no-responsive avatar">
     <div class="text-muted">Long time no see.</div>
     <div class="social-container">
       
@@ -148,6 +223,30 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/httpojcsoeasycom-write-up">        http://oj.csoeasy.com write up</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/cisp-pte-di-san-tao-ti">            cisp-pte第三套题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/cisp-pte-di-er-tao-ti">            cisp-pte第二套题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/mo-ni-cisp-pte">                  模拟cisp-pte</a>
+            </li>
+          
         
           
             <li>
@@ -186,27 +285,11 @@
           
         
           
-            <li>
-              <a href="https://shadownb.github.io//post/6667-duan-kou-msf">       metasploitable2各端口渗透</a>
-            </li>
+        
           
         
           
-            <li>
-              <a href="https://shadownb.github.io//post/wen-jian-bao-han">                 文件包含</a>
-            </li>
-          
         
-          
-            <li>
-              <a href="https://shadownb.github.io//post/dvwa-zhi-ming-ling-zhu-ru">          DVWA之命令注入</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://shadownb.github.io//post/ms17-010">                ms17-010</a>
-            </li>
           
         
           
@@ -250,7 +333,7 @@
     </div>
     <div class="row">
       
-        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge warning">
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge success">
           Gridea
         </a>
       

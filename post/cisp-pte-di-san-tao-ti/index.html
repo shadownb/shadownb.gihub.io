@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>            cisp-pte第三套题 | shadow&#39;s blog</title>
+<meta name="description" content="Long time no see.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://shadownb.github.io//favicon.ico?v=1615017265160">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://shadownb.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://shadownb.github.io/">shadow&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>            cisp-pte第三套题</h1>
+            <p class="article-meta">
+              2020-11-26
+              
+            </p>
+            
+            <div class="post-content">
+              <p>二阶sql注入<br>
+提示说需要admin用户登录才可以看到key，用户admin使用密码登录语句为<br>
+select * from user where name='admin' and pass='12345'<br>
+创建一个用户admin' #，密码为12345，登录语句<br>
+select * from user where name = 'admin' # ' and pass='12345'<br>
+由于注释符，后面的' and pass='12345'将被注释掉<br>
+sql语句变成select * from user where name = 'admin' 所以在这里只验证用户名为admin就可以登录</p>
+<p>上传一张图片，查看图片存放路径：注意jpg后缀不能被解析<br>
+<img src="https://shadownb.github.io//post-images/1606392353791.png" alt=""><br>
+存放在根目录下面<br>
+<img src="https://shadownb.github.io//post-images/1606392424864.png" alt=""><br>
+用bp，测试会过滤那些字符，发现eval/assert都会被过滤<br>
+<img src="https://shadownb.github.io//post-images/1606394022629.png" alt=""><br>
+<img src="https://shadownb.github.io//post-images/1606394306354.png" alt=""><br>
+用prep_replace函数<br>
+<img src="https://shadownb.github.io//post-images/1606394977793.png" alt=""><br>
+上传成功，菜刀连接，key在www下<br>
+<img src="https://shadownb.github.io//post-images/1606395069724.png" alt=""></p>
+<p>文件包含这一题很奇妙<br>
+直接用菜刀连接，配置密码为Hello就可以了<br>
+<img src="https://shadownb.github.io//post-images/1606395628574.png" alt=""></p>
+<p>命令执行题<br>
+先查看当前目录<br>
+<img src="https://shadownb.github.io//post-images/1606395747809.png" alt=""><br>
+查看当前目录的文件<br>
+<img src="https://shadownb.github.io//post-images/1606395786664.png" alt=""><br>
+查看上一层目录的文件<br>
+<img src="https://shadownb.github.io//post-images/1606395970476.png" alt=""><br>
+看到key.php,cat一下<br>
+<img src="https://shadownb.github.io//post-images/1606396033914.png" alt=""><br>
+显示命令包含敏感字符，测试哪一个是敏感字符，经过测试发现cat为敏感字符被过滤了，想办法绕过<br>
+<img src="https://shadownb.github.io//post-images/1606396880550.png" alt=""></p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://shadownb.github.io//post/cisp-pte-di-er-tao-ti">
+                <h3 class="post-title">
+                              cisp-pte第二套题
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://shadownb.github.io//images/avatar.png?v=1615017265160" class="no-responsive avatar">
+    <div class="text-muted">Long time no see.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/httpojcsoeasycom-write-up">        http://oj.csoeasy.com write up</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/cisp-pte-di-san-tao-ti">            cisp-pte第三套题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/cisp-pte-di-er-tao-ti">            cisp-pte第二套题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/mo-ni-cisp-pte">                  模拟cisp-pte</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/day6-zuo-ti">                  day6-做题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/mo-ni-cisp-pte-zong-he-ti-san-ge-key">             模拟cisp-pte 综合题三个key</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/upload-labs">                      upload-labs</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/phpmyadmin-yuan-cheng-dai-ma-zhi-xing-lou-dong">       phpmyadmin远程代码执行漏洞</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/python-format">python</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://shadownb.github.io//post/jis-ctf-ba-ji-shen-tou">                     JIS-CTF靶机渗透</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://shadownb.github.io//tag/z3TcqWale" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://shadownb.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
